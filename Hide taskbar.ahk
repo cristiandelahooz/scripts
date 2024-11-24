@@ -1,6 +1,6 @@
 ﻿hidden := false  ; Global variable to track visibility state
 
-^+t:: ; Ctrl + Shift + T to toggle taskbar visibility
+^+u:: ; Ctrl +Shift + U to toggle taskbar visibility
 {
     global hidden  ; Use the global variable
     if hidden
