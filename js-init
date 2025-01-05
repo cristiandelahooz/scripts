@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Create a new directory for the project
+if [ -n "$1" ]; then
+  mkdir $1
+  cd $1
+fi
+
+# Initialize a new pnpm package
+pnpm init
+
+# Add default scripts to package.json
+jq '.scripts = {
+    "format": "biome format --write ./src",
+    "lint": "biome check --write ./src",
+    "start": "node server.js",
+    "build": "webpack --config webpack.config.js",
+    "test": "jest"
+} | .author = "cristiandelahooz"' package.json >temp.json && mv temp.json package.json
+
+echo "Project initialized with my own initializer scripts."
